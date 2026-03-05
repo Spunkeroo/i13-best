@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>i13.best — The Best of Everything Online</title>
+  <meta name="description" content="i13.best — The Best of Everything Online. Live crypto prices, top AI tools, trending opportunities, curated links. Crypto • AI • Tools • Earning.">
+  <meta name="keywords" content="crypto prices, AI tools, Bitcoin, Ethereum, Solana, best sites, earning online, i13">
+  <meta property="og:title" content="i13.best — The Best of Everything Online">
+  <meta property="og:description" content="Live crypto, top AI tools, trending opportunities — all in one place.">
+  <meta property="og:url" content="https://i13.best/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@SpunkArt13">
+  <link rel="canonical" href="https://i13.best/">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --card: #1a1a2e;
+      --card2: #12121a;
+      --accent: #fee440;
+      --accent2: #bf5af2;
+      --purple: #bf5af2;
+      --cyan: #00f5d4;
+      --text: #f0f0f0;
+      --muted: #a0a0b8;
+      --border: #2a2a3e;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    @keyframes vtrPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    @keyframes tickerScroll {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 8px rgba(254,228,64,0.3); }
+      50% { box-shadow: 0 0 24px rgba(254,228,64,0.6); }
+    }
+
+    /* TICKER */
+    .ticker-wrap {
+      background: var(--card2);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding: 10px 0;
+      white-space: nowrap;
+      width: max-content;
+      animation: tickerScroll 30s linear infinite;
+    }
+    .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .ticker-coin { color: var(--muted); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; }
+    .ticker-price { color: var(--text); }
+    .ticker-chg { font-size: 0.8rem; }
+    .ticker-dot { color: var(--border); }
+
+    /* NAV */
+    nav {
+      background: rgba(10,10,15,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-star {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    .nav-brand {
+      font-size: 1.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+    .nav-tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: none;
+    }
+    @media (min-width: 480px) { .nav-tag { display: block; } }
+    .nav-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .btn-tip {
+      background: linear-gradient(135deg, var(--accent), #f5c400);
+      color: #0a0a0f;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .btn-tip:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(254,228,64,0.4); }
+    .nav-twitter {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .nav-twitter:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 64px 24px 48px;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeIn 0.6s ease;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(254,228,64,0.1);
+      border: 1px solid rgba(254,228,64,0.3);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.04em;
+    }
+    .hero h1 .gold { color: var(--accent); }
+    .hero h1 .purple { color: var(--accent2); }
+    .hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 28px;
+    }
+    .hero-pills {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .pill {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* MAIN LAYOUT */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 28px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+
+    /* SECTION HEADERS */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .section-icon { font-size: 1.1rem; }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .section-badge {
+      margin-left: auto;
+      background: rgba(0,245,212,0.1);
+      border: 1px solid rgba(0,245,212,0.3);
+      color: var(--cyan);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: rgba(254,228,64,0.3); }
+
+    /* CRYPTO SECTION */
+    .crypto-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 600px) { .crypto-grid { grid-template-columns: 1fr; } }
+    .crypto-coin {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+    .crypto-icon { font-size: 1.4rem; margin-bottom: 6px; }
+    .crypto-name { font-size: 0.7rem; color: var(--muted); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+    .crypto-price { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .crypto-change { font-size: 0.8rem; font-weight: 700; }
+    .crypto-ctas {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-cta {
+      flex: 1;
+      min-width: 120px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-decoration: none;
+      text-align: center;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: block;
+    }
+    .btn-cta:hover { transform: translateY(-1px); }
+    .btn-coinbase {
+      background: linear-gradient(135deg, #0052ff, #0041d0);
+      color: #fff;
+    }
+    .btn-coinbase:hover { box-shadow: 0 4px 14px rgba(0,82,255,0.4); }
+    .btn-binance {
+      background: linear-gradient(135deg, #f0b90b, #d4a10a);
+      color: #0a0a0f;
+    }
+    .btn-binance:hover { box-shadow: 0 4px 14px rgba(240,185,11,0.4); }
+
+    /* CATEGORY GRID */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .cat-card {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-decoration: none;
+      transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cat-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 6px 20px rgba(254,228,64,0.15);
+    }
+    .cat-emoji { font-size: 1.5rem; }
+    .cat-name { font-weight: 800; font-size: 0.9rem; color: var(--text); }
+    .cat-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
+
+    /* AFFILIATE CARDS */
+    .aff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .aff-card {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.15s, border-color 0.2s;
+    }
+    .aff-card:hover { transform: translateY(-2px); border-color: var(--accent2); }
+    .aff-header { display: flex; align-items: center; gap: 10px; }
+    .aff-icon { font-size: 1.4rem; }
+    .aff-name { font-weight: 800; font-size: 0.95rem; color: var(--text); }
+    .aff-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; flex: 1; }
+    .aff-link {
+      display: block;
+      text-align: center;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-decoration: none;
+      background: rgba(191,90,242,0.15);
+      border: 1px solid rgba(191,90,242,0.3);
+      color: var(--accent2);
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+    .aff-link:hover {
+      background: rgba(191,90,242,0.25);
+      box-shadow: 0 4px 12px rgba(191,90,242,0.2);
+    }
+
+    /* HN FEED */
+    .hn-feed-wrap { position: sticky; top: 60px; }
+    .hn-story {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      animation: fadeIn 0.3s ease;
+    }
+    .hn-story:last-child { border-bottom: none; }
+    .hn-story a {
+      color: var(--text);
+      font-size: 0.83rem;
+      font-weight: 600;
+      text-decoration: none;
+      line-height: 1.4;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .hn-story a:hover { color: var(--accent); }
+    .hn-meta { color: var(--muted); font-size: 0.72rem; }
+    .hn-score { color: var(--accent); font-weight: 700; }
+
+    /* EMPIRE GRID */
+    .empire-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .empire-link {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .empire-link:hover {
+      color: var(--accent);
+      border-color: rgba(254,228,64,0.4);
+      background: rgba(254,228,64,0.06);
+    }
+    .empire-link.current {
+      color: var(--accent);
+      border-color: rgba(254,228,64,0.5);
+      background: rgba(254,228,64,0.08);
+    }
+
+    /* BEST SITES */
+    .best-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .best-card {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: transform 0.15s, border-color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .best-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--cyan);
+    }
+    .best-icon { font-size: 1.2rem; }
+    .best-info {}
+    .best-name { font-size: 0.85rem; font-weight: 800; color: var(--text); }
+    .best-desc { font-size: 0.72rem; color: var(--muted); }
+
+    /* SECTION DIVIDERS */
+    .section-wrap { margin-bottom: 36px; }
+
+    /* STATUS LINE */
+    .status-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: vtrPulse 2s infinite;
+      display: inline-block;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+    /* LOADING STATE */
+    .loading {
+      background: linear-gradient(90deg, var(--card) 25%, var(--card2) 50%, var(--card) 75%);
+      background-size: 200% auto;
+      animation: shimmer 1.5s linear infinite;
+      border-radius: 4px;
+      display: inline-block;
+      color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+<!-- LIVE CRYPTO TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <div class="ticker-item">
+      <span class="ticker-coin">BTC</span>
+      <span class="ticker-price" id="tick-btc-price">Loading…</span>
+      <span class="ticker-chg" id="tick-btc-chg"></span>
+    </div>
+    <span class="ticker-dot">|</span>
+    <div class="ticker-item">
+      <span class="ticker-coin">ETH</span>
+      <span class="ticker-price" id="tick-eth-price">Loading…</span>
+      <span class="ticker-chg" id="tick-eth-chg"></span>
+    </div>
+    <span class="ticker-dot">|</span>
+    <div class="ticker-item">
+      <span class="ticker-coin">SOL</span>
+      <span class="ticker-price" id="tick-sol-price">Loading…</span>
+      <span class="ticker-chg" id="tick-sol-chg"></span>
+    </div>
+    <span class="ticker-dot">·</span>
+    <span style="color:var(--muted);font-size:0.78rem;font-weight:600;">⭐ i13.best — The Best of Everything Online</span>
+    <span class="ticker-dot">·</span>
+    <div class="ticker-item">
+      <span class="ticker-coin">BTC</span>
+      <span class="ticker-price" id="tick-btc-price2">—</span>
+      <span class="ticker-chg" id="tick-btc-chg2"></span>
+    </div>
+    <span class="ticker-dot">|</span>
+    <div class="ticker-item">
+      <span class="ticker-coin">ETH</span>
+      <span class="ticker-price" id="tick-eth-price2">—</span>
+      <span class="ticker-chg" id="tick-eth-chg2"></span>
+    </div>
+    <span class="ticker-dot">|</span>
+    <div class="ticker-item">
+      <span class="ticker-coin">SOL</span>
+      <span class="ticker-price" id="tick-sol-price2">—</span>
+      <span class="ticker-chg" id="tick-sol-chg2"></span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="https://i13.best/">
+    <span class="nav-logo-star">⭐</span>
+    <span class="nav-brand">i13.best</span>
+    <span class="nav-tag">The Best of Everything Online</span>
+  </a>
+  <div class="nav-right">
+    <a class="nav-twitter" href="https://twitter.com/SpunkArt13" target="_blank" rel="noopener">@SpunkArt13</a>
+    <button class="btn-tip" onclick="openTip()">🧡 Tip</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Live · Curated · Free</div>
+  <h1>The Best of the<br><span class="gold">Internet</span>, <span class="purple">Live</span></h1>
+  <p class="hero-sub">Live crypto prices, top AI tools, trending opportunities — curated in one place.</p>
+  <div class="hero-pills">
+    <span class="pill">🪙 Crypto</span>
+    <span class="pill">🤖 AI Tools</span>
+    <span class="pill">💼 Freelance</span>
+    <span class="pill">🎰 Play</span>
+    <span class="pill">⚙️ Automation</span>
+    <span class="pill">🎨 Design</span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+  <div class="main-grid">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <!-- CRYPTO -->
+      <div class="section-wrap card">
+        <div class="section-header">
+          <span class="section-icon">🪙</span>
+          <span class="section-title">Live Crypto Prices</span>
+          <span class="section-badge">Live</span>
+        </div>
+        <div class="crypto-grid">
+          <div class="crypto-coin">
+            <div class="crypto-icon">₿</div>
+            <div class="crypto-name">Bitcoin</div>
+            <div class="crypto-price" id="btc-price">—</div>
+            <div class="crypto-change" id="btc-change">—</div>
+          </div>
+          <div class="crypto-coin">
+            <div class="crypto-icon">⟠</div>
+            <div class="crypto-name">Ethereum</div>
+            <div class="crypto-price" id="eth-price">—</div>
+            <div class="crypto-change" id="eth-change">—</div>
+          </div>
+          <div class="crypto-coin">
+            <div class="crypto-icon">◎</div>
+            <div class="crypto-name">Solana</div>
+            <div class="crypto-price" id="sol-price">—</div>
+            <div class="crypto-change" id="sol-change">—</div>
+          </div>
+        </div>
+        <div class="crypto-ctas">
+          <a class="btn-cta btn-coinbase" href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored">🔵 Buy on Coinbase</a>
+          <a class="btn-cta btn-binance" href="https://www.binance.com/en/activity/referral/offers/claim?ref=CPA_00YX7PEJSP" target="_blank" rel="noopener sponsored">🟡 Trade on Binance</a>
+        </div>
+        <div class="status-line">
+          <span class="live-dot"></span>
+          Updates every 10 seconds via CoinGecko
+        </div>
+      </div>
+
+      <!-- CATEGORIES -->
+      <div class="section-wrap card">
+        <div class="section-header">
+          <span class="section-icon">🗂️</span>
+          <span class="section-title">Top Categories</span>
+        </div>
+        <div class="cat-grid">
+          <a class="cat-card" href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored">
+            <div class="cat-emoji">🪙</div>
+            <div class="cat-name">Crypto</div>
+            <div class="cat-desc">Buy, trade & earn Bitcoin, ETH, SOL on the best exchanges</div>
+          </a>
+          <a class="cat-card" href="https://app.leonardo.ai/?via=spunkart" target="_blank" rel="noopener sponsored">
+            <div class="cat-emoji">🤖</div>
+            <div class="cat-name">AI Tools</div>
+            <div class="cat-desc">Claude, ChatGPT, Leonardo AI — the best AI tools online</div>
+          </a>
+          <a class="cat-card" href="https://www.fiverr.com/s/spunkart" target="_blank" rel="noopener sponsored">
+            <div class="cat-emoji">💼</div>
+            <div class="cat-name">Freelance</div>
+            <div class="cat-desc">Hire top creators and developers on Fiverr</div>
+          </a>
+          <a class="cat-card" href="https://www.canva.com/join/spunkart" target="_blank" rel="noopener sponsored">
+            <div class="cat-emoji">🎨</div>
+            <div class="cat-name">Design</div>
+            <div class="cat-desc">Canva Pro + Leonardo AI for stunning graphics</div>
+          </a>
+          <a class="cat-card" href="https://www.make.com/en/register?pc=spunk" target="_blank" rel="noopener sponsored">
+            <div class="cat-emoji">⚙️</div>
+            <div class="cat-name">Automation</div>
+            <div class="cat-desc">Automate workflows with Make.com — no code needed</div>
+          </a>
+          <a class="cat-card" href="https://spunk.bet" target="_blank" rel="noopener">
+            <div class="cat-emoji">🎰</div>
+            <div class="cat-name">Play</div>
+            <div class="cat-desc">Spunk.Bet casino, Winna, Kalshi — free to play</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- AI TOOLS SECTION -->
+      <div class="section-wrap card">
+        <div class="section-header">
+          <span class="section-icon">🤖</span>
+          <span class="section-title">Best AI Tools</span>
+        </div>
+        <div class="aff-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">🧠</div>
+              <div class="aff-name">Claude</div>
+            </div>
+            <div class="aff-desc">Anthropic's most intelligent AI assistant. Best for writing, code, and reasoning.</div>
+            <a class="aff-link" href="https://claude.ai" target="_blank" rel="noopener">Try Claude Free →</a>
+          </div>
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">💬</div>
+              <div class="aff-name">ChatGPT</div>
+            </div>
+            <div class="aff-desc">OpenAI's flagship model. Great for brainstorming, writing, and everyday tasks.</div>
+            <a class="aff-link" href="https://chat.openai.com" target="_blank" rel="noopener">Try ChatGPT Free →</a>
+          </div>
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">🎨</div>
+              <div class="aff-name">Leonardo AI</div>
+            </div>
+            <div class="aff-desc">World-class AI image generation. Unlimited free credits every day.</div>
+            <a class="aff-link" href="https://app.leonardo.ai/?via=spunkart" target="_blank" rel="noopener sponsored">Start Free →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEST SITES -->
+      <div class="section-wrap card">
+        <div class="section-header">
+          <span class="section-icon">🌐</span>
+          <span class="section-title">Best Sites</span>
+        </div>
+        <div class="best-grid">
+          <a class="best-card" href="https://spunk.bet" target="_blank" rel="noopener">
+            <span class="best-icon">🎰</span>
+            <div class="best-info">
+              <div class="best-name">Spunk.Bet</div>
+              <div class="best-desc">Free crypto casino. Fast. Fair. Free.</div>
+            </div>
+          </a>
+          <a class="best-card" href="https://pfp.best" target="_blank" rel="noopener">
+            <span class="best-icon">🖼️</span>
+            <div class="best-info">
+              <div class="best-name">pfp.best</div>
+              <div class="best-desc">Best profile picture tools online</div>
+            </div>
+          </a>
+          <a class="best-card" href="https://spunkart.com" target="_blank" rel="noopener">
+            <span class="best-icon">🎭</span>
+            <div class="best-info">
+              <div class="best-name">SpunkArt.com</div>
+              <div class="best-desc">NFT art, ordinals & digital collectibles</div>
+            </div>
+          </a>
+          <a class="best-card" href="https://predict.horse" target="_blank" rel="noopener">
+            <span class="best-icon">🐴</span>
+            <div class="best-info">
+              <div class="best-name">predict.horse</div>
+              <div class="best-desc">Prediction markets for horse racing</div>
+            </div>
+          </a>
+          <a class="best-card" href="https://13.money" target="_blank" rel="noopener">
+            <span class="best-icon">💰</span>
+            <div class="best-info">
+              <div class="best-name">13.money</div>
+              <div class="best-desc">Finance & money tools</div>
+            </div>
+          </a>
+          <a class="best-card" href="https://alien.best" target="_blank" rel="noopener">
+            <span class="best-icon">👽</span>
+            <div class="best-info">
+              <div class="best-name">alien.best</div>
+              <div class="best-desc">Out-of-this-world curated content</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ALL AFFILIATES -->
+      <div class="section-wrap card">
+        <div class="section-header">
+          <span class="section-icon">🔗</span>
+          <span class="section-title">Affiliate Partners</span>
+        </div>
+        <div class="aff-grid">
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">🔵</div>
+              <div class="aff-name">Coinbase</div>
+            </div>
+            <div class="aff-desc">The easiest, most trusted place to buy and sell crypto.</div>
+            <a class="aff-link" href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored">Get $10 Free →</a>
+          </div>
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">🟡</div>
+              <div class="aff-name">Binance</div>
+            </div>
+            <div class="aff-desc">World's largest crypto exchange. Low fees, deep liquidity.</div>
+            <a class="aff-link" href="https://www.binance.com/en/activity/referral/offers/claim?ref=CPA_00YX7PEJSP" target="_blank" rel="noopener sponsored">Claim Bonus →</a>
+          </div>
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">🎨</div>
+              <div class="aff-name">Leonardo AI</div>
+            </div>
+            <div class="aff-desc">Create stunning AI art with unlimited free daily credits.</div>
+            <a class="aff-link" href="https://app.leonardo.ai/?via=spunkart" target="_blank" rel="noopener sponsored">Start Free →</a>
+          </div>
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">🟢</div>
+              <div class="aff-name">Fiverr</div>
+            </div>
+            <div class="aff-desc">Hire talented freelancers for design, dev, writing & more.</div>
+            <a class="aff-link" href="https://www.fiverr.com/s/spunkart" target="_blank" rel="noopener sponsored">Browse Talent →</a>
+          </div>
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">⚙️</div>
+              <div class="aff-name">Make.com</div>
+            </div>
+            <div class="aff-desc">Automate any workflow with no-code visual builder. Free plan available.</div>
+            <a class="aff-link" href="https://www.make.com/en/register?pc=spunk" target="_blank" rel="noopener sponsored">Automate Free →</a>
+          </div>
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">📈</div>
+              <div class="aff-name">Kalshi</div>
+            </div>
+            <div class="aff-desc">Trade on real-world events. The regulated prediction market.</div>
+            <a class="aff-link" href="https://kalshi.com/sign-up/?referral=6b72a842-a7f3-46b2-b8f4-2e3e8b498712" target="_blank" rel="noopener sponsored">Trade Now →</a>
+          </div>
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">🎲</div>
+              <div class="aff-name">Winna</div>
+            </div>
+            <div class="aff-desc">Play provably fair crypto games. Instant withdrawals.</div>
+            <a class="aff-link" href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored">Play Now →</a>
+          </div>
+          <div class="aff-card">
+            <div class="aff-header">
+              <div class="aff-icon">🖌️</div>
+              <div class="aff-name">Canva Pro</div>
+            </div>
+            <div class="aff-desc">Design anything — social posts, logos, presentations — in minutes.</div>
+            <a class="aff-link" href="https://www.canva.com/join/spunkart" target="_blank" rel="noopener sponsored">Design Free →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMPIRE GRID -->
+      <div class="section-wrap card">
+        <div class="section-header">
+          <span class="section-icon">🌐</span>
+          <span class="section-title">The i13 Network</span>
+        </div>
+        <div class="empire-grid">
+          <a class="empire-link" href="https://spunk.bet" target="_blank" rel="noopener">spunk.bet</a>
+          <a class="empire-link" href="https://pfp.best" target="_blank" rel="noopener">pfp.best</a>
+          <a class="empire-link" href="https://spunkart.com" target="_blank" rel="noopener">spunkart.com</a>
+          <a class="empire-link" href="https://13.money" target="_blank" rel="noopener">13.money</a>
+          <a class="empire-link" href="https://13.markets" target="_blank" rel="noopener">13.markets</a>
+          <a class="empire-link" href="https://13.golf" target="_blank" rel="noopener">13.golf</a>
+          <a class="empire-link" href="https://13.energy" target="_blank" rel="noopener">13.energy</a>
+          <a class="empire-link" href="https://13.dance" target="_blank" rel="noopener">13.dance</a>
+          <a class="empire-link" href="https://free.institute" target="_blank" rel="noopener">free.institute</a>
+          <a class="empire-link" href="https://free.gripe" target="_blank" rel="noopener">free.gripe</a>
+          <a class="empire-link" href="https://chicago.coach" target="_blank" rel="noopener">chicago.coach</a>
+          <a class="empire-link" href="https://predict.horse" target="_blank" rel="noopener">predict.horse</a>
+          <a class="empire-link" href="https://predict.pics" target="_blank" rel="noopener">predict.pics</a>
+          <a class="empire-link" href="https://predict.mom" target="_blank" rel="noopener">predict.mom</a>
+          <a class="empire-link" href="https://predict.codes" target="_blank" rel="noopener">predict.codes</a>
+          <a class="empire-link" href="https://predict.boats" target="_blank" rel="noopener">predict.boats</a>
+          <a class="empire-link" href="https://predict.yachts" target="_blank" rel="noopener">predict.yachts</a>
+          <a class="empire-link" href="https://alien.best" target="_blank" rel="noopener">alien.best</a>
+          <a class="empire-link" href="https://alien.beauty" target="_blank" rel="noopener">alien.beauty</a>
+          <a class="empire-link" href="https://plush.best" target="_blank" rel="noopener">plush.best</a>
+          <a class="empire-link" href="https://plush.surf" target="_blank" rel="noopener">plush.surf</a>
+          <a class="empire-link" href="https://clown.best" target="_blank" rel="noopener">clown.best</a>
+          <a class="empire-link" href="https://clown.surf" target="_blank" rel="noopener">clown.surf</a>
+          <a class="empire-link" href="https://clown.cam" target="_blank" rel="noopener">clown.cam</a>
+          <a class="empire-link" href="https://clown.sbs" target="_blank" rel="noopener">clown.sbs</a>
+          <a class="empire-link" href="https://iai.autos" target="_blank" rel="noopener">iai.autos</a>
+          <a class="empire-link" href="https://iai.boats" target="_blank" rel="noopener">iai.boats</a>
+          <a class="empire-link current" href="https://i13.best" target="_blank" rel="noopener">i13.best</a>
+          <a class="empire-link" href="https://i13.buzz" target="_blank" rel="noopener">i13.buzz</a>
+          <a class="empire-link" href="https://i13.autos" target="_blank" rel="noopener">i13.autos</a>
+          <a class="empire-link" href="https://i13.lat" target="_blank" rel="noopener">i13.lat</a>
+          <a class="empire-link" href="https://i13.pics" target="_blank" rel="noopener">i13.pics</a>
+          <a class="empire-link" href="https://i13.space" target="_blank" rel="noopener">i13.space</a>
+          <a class="empire-link" href="https://ai13.fun" target="_blank" rel="noopener">ai13.fun</a>
+          <a class="empire-link" href="https://ai13.store" target="_blank" rel="noopener">ai13.store</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div>
+      <div class="hn-feed-wrap">
+
+        <!-- HN FEED -->
+        <div class="card" style="margin-bottom:20px;">
+          <div class="section-header">
+            <span class="section-icon">🔥</span>
+            <span class="section-title">Hacker News Live</span>
+            <span class="section-badge">Live</span>
+          </div>
+          <div id="hn-feed">
+            <div class="hn-story" style="opacity:0.5;">
+              <div style="color:var(--muted);font-size:0.8rem;">Loading top stories…</div>
+            </div>
+          </div>
+          <div class="status-line" style="margin-top:10px;">
+            <span class="live-dot"></span>
+            Top stories · 10s refresh
+          </div>
+        </div>
+
+        <!-- PLAY SECTION -->
+        <div class="card" style="margin-bottom:20px;">
+          <div class="section-header">
+            <span class="section-icon">🎰</span>
+            <span class="section-title">Play &amp; Earn</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <a class="best-card" href="https://spunk.bet" target="_blank" rel="noopener" style="background:rgba(254,228,64,0.06);border-color:rgba(254,228,64,0.3);">
+              <span class="best-icon">🎰</span>
+              <div class="best-info">
+                <div class="best-name" style="color:var(--accent);">Spunk.Bet</div>
+                <div class="best-desc">Free daily SPUNK. Fast. Fair. Free.</div>
+              </div>
+            </a>
+            <a class="best-card" href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored">
+              <span class="best-icon">🎲</span>
+              <div class="best-info">
+                <div class="best-name">Winna</div>
+                <div class="best-desc">Crypto casino · instant payouts</div>
+              </div>
+            </a>
+            <a class="best-card" href="https://kalshi.com/sign-up/?referral=6b72a842-a7f3-46b2-b8f4-2e3e8b498712" target="_blank" rel="noopener sponsored">
+              <span class="best-icon">📈</span>
+              <div class="best-info">
+                <div class="best-name">Kalshi</div>
+                <div class="best-desc">Regulated prediction markets</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- QUICK LINKS -->
+        <div class="card">
+          <div class="section-header">
+            <span class="section-icon">⚡</span>
+            <span class="section-title">Quick Launch</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a class="best-card" href="https://claude.ai" target="_blank" rel="noopener">
+              <span class="best-icon">🧠</span>
+              <div class="best-info"><div class="best-name">Claude</div><div class="best-desc">AI by Anthropic</div></div>
+            </a>
+            <a class="best-card" href="https://chat.openai.com" target="_blank" rel="noopener">
+              <span class="best-icon">💬</span>
+              <div class="best-info"><div class="best-name">ChatGPT</div><div class="best-desc">AI by OpenAI</div></div>
+            </a>
+            <a class="best-card" href="https://app.leonardo.ai/?via=spunkart" target="_blank" rel="noopener sponsored">
+              <span class="best-icon">🎨</span>
+              <div class="best-info"><div class="best-name">Leonardo AI</div><div class="best-desc">AI image generation</div></div>
+            </a>
+            <a class="best-card" href="https://www.fiverr.com/s/spunkart" target="_blank" rel="noopener sponsored">
+              <span class="best-icon">💼</span>
+              <div class="best-info"><div class="best-name">Fiverr</div><div class="best-desc">Hire a freelancer</div></div>
+            </a>
+            <a class="best-card" href="https://www.make.com/en/register?pc=spunk" target="_blank" rel="noopener sponsored">
+              <span class="best-icon">⚙️</span>
+              <div class="best-info"><div class="best-name">Make.com</div><div class="best-desc">Automate workflows</div></div>
+            </a>
+            <a class="best-card" href="https://www.canva.com/join/spunkart" target="_blank" rel="noopener sponsored">
+              <span class="best-icon">🖌️</span>
+              <div class="best-info"><div class="best-name">Canva Pro</div><div class="best-desc">Design anything</div></div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2026 i13 Network — Built by <a href="https://spunkart.com" target="_blank" rel="noopener">SpunkArt</a> · <a href="https://twitter.com/SpunkArt13" target="_blank" rel="noopener">@SpunkArt13</a></div>
+  <div class="footer-links">
+    <a href="https://spunk.bet" target="_blank" rel="noopener">spunk.bet</a>
+    <a href="https://pfp.best" target="_blank" rel="noopener">pfp.best</a>
+    <a href="https://spunkart.com" target="_blank" rel="noopener">spunkart.com</a>
+    <a href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored">Coinbase</a>
+    <a href="https://www.fiverr.com/s/spunkart" target="_blank" rel="noopener sponsored">Fiverr</a>
+    <button onclick="openTip()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.82rem;padding:0;">🧡 Tip</button>
+  </div>
+</footer>
+
+<!-- VTR BADGE -->
+<div style="position:fixed;bottom:12px;right:12px;background:#1a1a2e;border:1px solid #2a2a3e;border-radius:20px;padding:6px 14px;font-size:12px;color:#a0a0b8;z-index:9999;display:flex;align-items:center;gap:6px;" id="vtr-badge">
+  <span style="width:7px;height:7px;border-radius:50%;background:#fee440;animation:vtrPulse 2s infinite;display:inline-block;"></span>
+  <span id="vtr-count">...</span>
+</div>
+<script>
+(function(){
+  if(window._vtrInit)return;window._vtrInit=true;
+  var DB='https://predict-network-ec767-default-rtdb.firebaseio.com';
+  var site=(location.hostname||'local').replace(/\./g,'_').replace(/[#$\[\]]/g,'_');
+  var sid='s'+Math.random().toString(36).slice(2)+Date.now().toString(36);
+  var sRef=DB+'/vtr/'+site+'/s/'+sid+'.json';
+  var allRef=DB+'/vtr/'+site+'/s.json';
+  var now=Date.now;
+  function ping(){fetch(sRef,{method:'PUT',body:JSON.stringify({t:now()}),headers:{'Content-Type':'application/json'}}).catch(function(){});}
+  function refresh(){
+    fetch(allRef).then(function(r){return r.json();}).then(function(d){
+      var n=1;
+      if(d&&typeof d==='object'){
+        var vals=Object.values(d);
+        n=Math.max(1,vals.filter(function(v){return v&&v.t&&(now()-v.t)<25000;}).length);
+        Object.entries(d).forEach(function(e){if(e[1]&&e[1].t&&(now()-e[1].t)>60000)fetch(DB+'/vtr/'+site+'/s/'+e[0]+'.json',{method:'DELETE'}).catch(function(){});});
+      }
+      var el=document.getElementById('vtr-count');
+      if(el)el.textContent=n+(n===1?' visitor':' visitors')+' online';
+    }).catch(function(){var el=document.getElementById('vtr-count');if(el)el.textContent='1 visitor online';});
+  }
+  var day=new Date().toISOString().slice(0,10);
+  var hRef=DB+'/vtr/'+site+'/hits/'+day+'.json';
+  fetch(hRef).then(function(r){return r.json();}).then(function(n){fetch(hRef,{method:'PUT',body:JSON.stringify((n||0)+1),headers:{'Content-Type':'application/json'}}).catch(function(){});}).catch(function(){});
+  window.addEventListener('pagehide',function(){fetch(sRef,{method:'DELETE',keepalive:true}).catch(function(){});});
+  ping();refresh();
+  setInterval(function(){ping();refresh();},10000);
+})();
+</script>
+
+<!-- TIP MODAL -->
+<div id="tip-modal" onclick="if(event.target===this)closeTip()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;z-index:10000;">
+  <div style="background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px;padding:32px;max-width:420px;width:90%;text-align:center;">
+    <h3 style="color:#f0f0f0;margin-bottom:8px;">🧡 Tip Spunk</h3>
+    <p style="color:#a0a0b8;font-size:0.9rem;margin-bottom:20px;">Built by one person with AI. Every tip keeps these sites free. 🧡</p>
+    <div id="tip-addr" onclick="copyTip()" style="background:#0a0a0f;border:1px solid #2a2a3e;border-radius:8px;padding:12px;font-family:monospace;font-size:0.75rem;color:#00f5d4;word-break:break-all;cursor:pointer;margin-bottom:8px;">bc1pkepg42ctsvsxk499qu02qqyyz88gwjchnjpsu22wmng9rhpfv3jqw2t2hm</div>
+    <p style="color:#a0a0b8;font-size:0.8rem;margin-bottom:16px;">Click to copy • Bitcoin (BTC)</p>
+    <button onclick="closeTip()" style="background:#2a2a3e;color:#f0f0f0;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;">Close</button>
+  </div>
+</div>
+<script>
+function openTip(){var m=document.getElementById('tip-modal');if(m){m.style.display='flex';}}
+function closeTip(){var m=document.getElementById('tip-modal');if(m){m.style.display='none';}}
+function copyTip(){navigator.clipboard.writeText('bc1pkepg42ctsvsxk499qu02qqyyz88gwjchnjpsu22wmng9rhpfv3jqw2t2hm').then(function(){var el=document.getElementById('tip-addr');if(el){var o=el.textContent;el.textContent='Copied!';setTimeout(function(){el.textContent=o;},2000);}}).catch(function(){});}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTip();});
+</script>
+
+<!-- MAIN JS -->
+<script>
+async function loadCrypto() {
+  try {
+    const d = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true').then(r=>r.json());
+    if (d.bitcoin) {
+      const p = '$'+d.bitcoin.usd.toLocaleString();
+      const chg = d.bitcoin.usd_24h_change;
+      const chgStr = (chg>=0?'+':'')+chg.toFixed(1)+'%';
+      const chgColor = chg>=0?'#22c55e':'#ef4444';
+      document.getElementById('btc-price').textContent = p;
+      const el = document.getElementById('btc-change');
+      el.textContent = chgStr; el.style.color = chgColor;
+      document.getElementById('tick-btc-price').textContent = p;
+      document.getElementById('tick-btc-price2').textContent = p;
+      const t1 = document.getElementById('tick-btc-chg');
+      const t2 = document.getElementById('tick-btc-chg2');
+      t1.textContent = chgStr; t1.style.color = chgColor;
+      t2.textContent = chgStr; t2.style.color = chgColor;
+    }
+    if (d.ethereum) {
+      const p = '$'+d.ethereum.usd.toLocaleString();
+      const chg = d.ethereum.usd_24h_change;
+      const chgStr = (chg>=0?'+':'')+chg.toFixed(1)+'%';
+      const chgColor = chg>=0?'#22c55e':'#ef4444';
+      document.getElementById('eth-price').textContent = p;
+      const el = document.getElementById('eth-change');
+      el.textContent = chgStr; el.style.color = chgColor;
+      document.getElementById('tick-eth-price').textContent = p;
+      document.getElementById('tick-eth-price2').textContent = p;
+      const t1 = document.getElementById('tick-eth-chg');
+      const t2 = document.getElementById('tick-eth-chg2');
+      t1.textContent = chgStr; t1.style.color = chgColor;
+      t2.textContent = chgStr; t2.style.color = chgColor;
+    }
+    if (d.solana) {
+      const p = '$'+d.solana.usd.toLocaleString();
+      const chg = d.solana.usd_24h_change;
+      const chgStr = (chg>=0?'+':'')+chg.toFixed(1)+'%';
+      const chgColor = chg>=0?'#22c55e':'#ef4444';
+      document.getElementById('sol-price').textContent = p;
+      const el = document.getElementById('sol-change');
+      el.textContent = chgStr; el.style.color = chgColor;
+      document.getElementById('tick-sol-price').textContent = p;
+      document.getElementById('tick-sol-price2').textContent = p;
+      const t1 = document.getElementById('tick-sol-chg');
+      const t2 = document.getElementById('tick-sol-chg2');
+      t1.textContent = chgStr; t1.style.color = chgColor;
+      t2.textContent = chgStr; t2.style.color = chgColor;
+    }
+  } catch(e) {}
+}
+
+async function loadHN() {
+  try {
+    const ids = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json').then(r=>r.json());
+    const stories = await Promise.all(ids.slice(0,5).map(id => fetch('https://hacker-news.firebaseio.com/v0/item/'+id+'.json').then(r=>r.json())));
+    const el = document.getElementById('hn-feed');
+    if (!el) return;
+    el.innerHTML = stories.filter(s=>s&&s.title).map(s => `
+      <div class="hn-story">
+        <a href="${s.url||'https://news.ycombinator.com/item?id='+s.id}" target="_blank" rel="noopener">${s.title}</a>
+        <div class="hn-meta"><span class="hn-score">▲ ${s.score||0}</span> · ${s.by||''}</div>
+      </div>
+    `).join('');
+  } catch(e) {}
+}
+
+loadCrypto(); loadHN();
+setInterval(()=>{loadCrypto();loadHN();}, 10000);
+</script>
+
+</body>
+</html>
